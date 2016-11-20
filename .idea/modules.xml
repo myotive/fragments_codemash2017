@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/conductor/conductor.iml" filepath="$PROJECT_DIR$/conductor/conductor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragments_codemash2017.iml" filepath="$PROJECT_DIR$/fragments_codemash2017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragmentsample/fragmentsample.iml" filepath="$PROJECT_DIR$/fragmentsample/fragmentsample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mortarandflow/mortarandflow.iml" filepath="$PROJECT_DIR$/mortarandflow/mortarandflow.iml" />
+    </modules>
+  </component>
+</project>
