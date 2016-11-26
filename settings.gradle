@@ -1,1 +1,1 @@
-include ':mortarandflow', ':conductor', ':fragmentsample'
+include ':mortarandflow', ':conductor', ':fragmentsample', ':mosbyexample', ':activityexample'

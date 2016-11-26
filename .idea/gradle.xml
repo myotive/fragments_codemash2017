@@ -9,9 +9,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/activityexample" />
             <option value="$PROJECT_DIR$/conductor" />
             <option value="$PROJECT_DIR$/fragmentsample" />
             <option value="$PROJECT_DIR$/mortarandflow" />
+            <option value="$PROJECT_DIR$/mosbyexample" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="viewstate-2.0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mosbyexample/build/intermediates/exploded-aar/com.hannesdorfmann.mosby/viewstate/2.0.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/mosbyexample/build/intermediates/exploded-aar/com.hannesdorfmann.mosby/viewstate/2.0.1/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hannesdorfmann.mosby/viewstate/2.0.1/d757a518e60356d0a90a9fcbda61aa011c3a0eb4/viewstate-2.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
