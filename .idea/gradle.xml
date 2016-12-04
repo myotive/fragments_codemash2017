@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/activityexample" />
+            <option value="$PROJECT_DIR$/codemash_common" />
             <option value="$PROJECT_DIR$/conductor" />
             <option value="$PROJECT_DIR$/fragmentsample" />
             <option value="$PROJECT_DIR$/mortarandflow" />

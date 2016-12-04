@@ -32,6 +32,8 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
 
+    compile project(":codemash_common")
+
     // Mortar and Flow
     compile 'com.squareup.mortar:mortar:0.20'
     compile 'com.squareup.flow:flow:0.12'

@@ -37,6 +37,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
 
+    compile project(":codemash_common")
 
     // Conductor
     compile 'com.bluelinelabs:conductor:2.0.4'
@@ -56,6 +57,10 @@ dependencies {
     compile 'com.trello:rxlifecycle-android:1.0'
     // If you want pre-written Activities and Fragments you can subclass as providers
     compile 'com.trello:rxlifecycle-components:1.0'
+
+    // Dagger 2
+    compile 'com.google.dagger:dagger:2.8'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
 
     testCompile 'junit:junit:4.12'
 }
