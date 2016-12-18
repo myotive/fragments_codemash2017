@@ -1,7 +1,6 @@
 package com.example.myotive.codemash_common.ui;
 
 import android.content.Context;
-import android.support.v4.text.TextUtilsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import com.example.myotive.codemash_common.R;
 import com.example.myotive.codemash_common.network.models.Speaker;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,15 +24,33 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.SpeakerV
     private List<Speaker> speakers;
     private Context context;
 
+    public View.OnClickListener onSpeakerClickListener;
+
     public SpeakerAdapter(Context context, List<Speaker> speakers){
         this.context = context;
         this.speakers = speakers;
     }
 
+    public SpeakerAdapter(Context context, List<Speaker> speakers, View.OnClickListener onClickListener){
+        this.context = context;
+        this.speakers = speakers;
+        this.onSpeakerClickListener = onClickListener;
+    }
+
     @Override
     public SpeakerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_speaker, null);
-        return new SpeakerViewHolder(view);
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(onSpeakerClickListener != null){
+                    onSpeakerClickListener.onClick(view);
+                }
+            }
+        };
+
+        return new SpeakerViewHolder(view, onClickListener);
     }
 
     @Override
@@ -74,14 +90,24 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.SpeakerV
         return speakers != null ? speakers.size() : 0;
     }
 
+    public Speaker getItem(int pos){
+        return speakers.get(pos);
+    }
+
+    /***
+     * View Holder class
+     */
     class SpeakerViewHolder extends RecyclerView.ViewHolder {
 
         protected ImageView speakerImage;
         protected TextView speakerName;
         protected TextView speakerBio;
 
-        public SpeakerViewHolder(View itemView) {
+        public SpeakerViewHolder(View itemView, View.OnClickListener onClickListener) {
             super(itemView);
+
+            itemView.setOnClickListener(onClickListener);
+
             speakerImage = (ImageView) itemView.findViewById(R.id.speaker_profile_image);
             speakerName = (TextView)itemView.findViewById(R.id.speaker_name);
             speakerBio = (TextView)itemView.findViewById(R.id.speaker_bio);

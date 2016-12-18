@@ -1,1 +1,1 @@
-include ':mortarandflow', ':conductor', ':fragmentsample', ':mosbyexample', ':activityexample', ':codemash_common'
+include ':mortarandflow', ':conductor', ':fragmentsample', ':mosbyexample', ':activityexample', ':codemash_common', ':mvpexample'
