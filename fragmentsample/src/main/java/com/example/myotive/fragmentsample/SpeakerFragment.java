@@ -15,7 +15,6 @@ import com.example.myotive.codemash_common.network.CodeMashAPI;
 import com.example.myotive.codemash_common.network.models.Speaker;
 import com.example.myotive.codemash_common.ui.SpeakerAdapter;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
