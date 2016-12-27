@@ -3,6 +3,7 @@ package com.example.myotive.fragmentsample;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,6 +15,8 @@ import com.example.myotive.codemash_common.BaseApplication;
 import com.example.myotive.codemash_common.network.CodeMashAPI;
 import com.example.myotive.codemash_common.network.models.Speaker;
 import com.example.myotive.codemash_common.ui.SpeakerAdapter;
+import com.example.myotive.codemash_common.utility.FragmentUtility;
+import com.example.myotive.codemash_common.utility.TransitionType;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,6 +32,20 @@ public class SpeakerFragment extends Fragment {
     private CodeMashAPI codeMashAPI;
     private RecyclerView speakerRecyclerView;
     private SpeakerAdapter speakerAdapter;
+
+    private View.OnClickListener speakerClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            int itemPosition = speakerRecyclerView.getChildLayoutPosition(view);
+            Speaker speaker = speakerAdapter.getItem(itemPosition);
+
+            FragmentUtility.goToFragment(getFragmentManager(),
+                    SpeakerDetailFragment.newInstance(speaker),
+                    R.id.main_content,
+                    true,
+                    TransitionType.SlideHorizontal);
+        }
+    };
 
     public SpeakerFragment() {
         // Required empty public constructor
@@ -50,7 +67,7 @@ public class SpeakerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_speaker, container, false);
 
-        speakerAdapter = new SpeakerAdapter(getContext(), Collections.<Speaker>emptyList());
+        speakerAdapter = new SpeakerAdapter(getContext(), Collections.<Speaker>emptyList(), speakerClickListener);
 
         speakerRecyclerView = (RecyclerView)view.findViewById(R.id.rv_speakers);
         speakerRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -76,5 +93,11 @@ public class SpeakerFragment extends Fragment {
                 Log.e(TAG, "onFailure: ", t);
             }
         });
+
+        if(((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+        }
     }
 }

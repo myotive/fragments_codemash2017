@@ -1,4 +1,4 @@
-package com.example.myotive.mvpexample.codemash;
+package com.example.myotive.mvpexample.speakerlist;
 
 import android.util.Log;
 
@@ -15,16 +15,16 @@ import retrofit2.Response;
  * Created by michaelyotive_hr on 12/17/16.
  */
 
-public class SpeakerPresenter implements SpeakerContract.Presenter {
+public class SpeakerListPresenter implements SpeakerListContract.Presenter {
 
-    private static final String TAG = SpeakerPresenter.class.getSimpleName();
+    private static final String TAG = SpeakerListPresenter.class.getSimpleName();
 
     private CodeMashAPI codeMashAPI;
-    private SpeakerContract.View view;
+    private SpeakerListContract.View view;
 
     private Call<List<Speaker>> speakerCall;
 
-    public SpeakerPresenter(CodeMashAPI codeMashAPI, SpeakerContract.View view){
+    public SpeakerListPresenter(CodeMashAPI codeMashAPI, SpeakerListContract.View view){
         this.codeMashAPI = codeMashAPI;
         this.view = view;
 

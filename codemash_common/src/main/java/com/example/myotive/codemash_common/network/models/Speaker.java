@@ -3,13 +3,14 @@ package com.example.myotive.codemash_common.network.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by michaelyotive_hr on 12/3/16.
  */
 
-public class Speaker {
+public class Speaker implements Serializable {
     @SerializedName("Id")
     @Expose
     private UUID id;
@@ -60,6 +61,10 @@ public class Speaker {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFullName(){
+        return String.format("%s %s", firstName, lastName);
     }
 
     public String getBiography() {

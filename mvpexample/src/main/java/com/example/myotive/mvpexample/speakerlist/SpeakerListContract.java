@@ -1,8 +1,8 @@
-package com.example.myotive.mvpexample.codemash;
+package com.example.myotive.mvpexample.speakerlist;
 
 import com.example.myotive.codemash_common.network.models.Speaker;
-import com.example.myotive.mvpexample.BasePresenter;
-import com.example.myotive.mvpexample.BaseView;
+import com.example.myotive.mvpexample.mvp.BasePresenter;
+import com.example.myotive.mvpexample.mvp.BaseView;
 
 import java.util.List;
 
@@ -10,10 +10,9 @@ import java.util.List;
  * Created by michaelyotive_hr on 12/17/16.
  */
 
-public interface SpeakerContract  {
+public interface SpeakerListContract {
     interface View extends BaseView<Presenter>{
         void updateSpeakerList(List<Speaker> speakers);
-        Speaker onSpeakerClick(int pos);
     }
 
     interface Presenter extends BasePresenter{
