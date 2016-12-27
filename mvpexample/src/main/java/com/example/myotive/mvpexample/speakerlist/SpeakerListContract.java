@@ -13,6 +13,8 @@ import java.util.List;
 public interface SpeakerListContract {
     interface View extends BaseView<Presenter>{
         void updateSpeakerList(List<Speaker> speakers);
+        void showLoading();
+        void hideLoading();
     }
 
     interface Presenter extends BasePresenter{

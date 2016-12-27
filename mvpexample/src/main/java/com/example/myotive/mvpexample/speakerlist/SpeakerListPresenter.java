@@ -1,6 +1,8 @@
 package com.example.myotive.mvpexample.speakerlist;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.myotive.codemash_common.network.CodeMashAPI;
 import com.example.myotive.codemash_common.network.models.Speaker;
@@ -28,7 +30,6 @@ public class SpeakerListPresenter implements SpeakerListContract.Presenter {
         this.codeMashAPI = codeMashAPI;
         this.view = view;
 
-
         this.view.setPresenter(this);
     }
 
@@ -46,6 +47,8 @@ public class SpeakerListPresenter implements SpeakerListContract.Presenter {
 
     @Override
     public void getSpeakerList() {
+
+        view.showLoading();
         speakerCall = codeMashAPI.GetSpeakers();
 
         speakerCall.enqueue(new Callback<List<Speaker>>() {
@@ -54,11 +57,13 @@ public class SpeakerListPresenter implements SpeakerListContract.Presenter {
                 if(response.isSuccessful()){
                     view.updateSpeakerList(response.body());
                 }
+                view.hideLoading();
             }
 
             @Override
             public void onFailure(Call<List<Speaker>> call, Throwable t) {
                 Log.e(TAG, "Error calling CodeMash API", t);
+                view.hideLoading();
             }
         });
     }

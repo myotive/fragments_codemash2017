@@ -6,6 +6,13 @@
     tools:context="com.example.myotive.mvpexample.speakerlist.SpeakerListView"
     tools:parentTag="FrameLayout">
 
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_speakers"
         android:layout_width="match_parent"

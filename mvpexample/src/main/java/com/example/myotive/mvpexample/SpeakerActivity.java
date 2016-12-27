@@ -2,6 +2,8 @@ package com.example.myotive.mvpexample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.myotive.codemash_common.BaseApplication;
 import com.example.myotive.codemash_common.network.CodeMashAPI;
@@ -22,6 +24,7 @@ public class SpeakerActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         speakerListView = (SpeakerListView)findViewById(R.id.speakerView);
+
         codeMashAPI = BaseApplication.getApplication(this).getApplicationComponent().CodeMashAPI();
 
         speakerListPresenter = new SpeakerListPresenter(codeMashAPI, speakerListView);

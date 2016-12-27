@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
 import com.example.myotive.codemash_common.network.models.Speaker;
 import com.example.myotive.codemash_common.ui.SpeakerAdapter;
@@ -23,6 +24,7 @@ import java.util.List;
 public class SpeakerListView extends FrameLayout implements SpeakerListContract.View {
 
 
+    private ProgressBar loader;
     private RecyclerView speakerRecyclerView;
     private SpeakerAdapter speakerAdapter;
 
@@ -58,6 +60,8 @@ public class SpeakerListView extends FrameLayout implements SpeakerListContract.
     private void init() {
         inflate(getContext(), R.layout.view_speaker_list, this);
 
+        loader = (ProgressBar)findViewById(R.id.loading);
+
         speakerAdapter = new SpeakerAdapter(getContext(), Collections.<Speaker>emptyList(), speakerClickListener);
         speakerRecyclerView = (RecyclerView) this.findViewById(R.id.rv_speakers);
         speakerRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -67,6 +71,18 @@ public class SpeakerListView extends FrameLayout implements SpeakerListContract.
     @Override
     public void updateSpeakerList(List<Speaker> speakers) {
         speakerAdapter.swap(speakers);
+    }
+
+    @Override
+    public void showLoading() {
+        loader.setVisibility(VISIBLE);
+        speakerRecyclerView.setVisibility(GONE);
+    }
+
+    @Override
+    public void hideLoading() {
+        loader.setVisibility(GONE);
+        speakerRecyclerView.setVisibility(VISIBLE);
     }
 
     @Override
