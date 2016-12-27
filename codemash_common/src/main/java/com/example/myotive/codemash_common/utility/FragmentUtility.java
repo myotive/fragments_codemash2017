@@ -43,7 +43,7 @@ public class FragmentUtility {
 
         ft.setCustomAnimations(enter, exit, popEnter, popExit)
                 .replace(containerId, fragment, tag)
-                .commitAllowingStateLoss();
+                .commit();
     }
 
 }

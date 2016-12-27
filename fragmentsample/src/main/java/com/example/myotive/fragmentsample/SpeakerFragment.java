@@ -67,7 +67,9 @@ public class SpeakerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_speaker, container, false);
 
-        speakerAdapter = new SpeakerAdapter(getContext(), Collections.<Speaker>emptyList(), speakerClickListener);
+        if(speakerAdapter == null) {
+            speakerAdapter = new SpeakerAdapter(getContext(), Collections.<Speaker>emptyList(), speakerClickListener);
+        }
 
         speakerRecyclerView = (RecyclerView)view.findViewById(R.id.rv_speakers);
         speakerRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -80,19 +82,28 @@ public class SpeakerFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        codeMashAPI.GetSpeakers().enqueue(new Callback<List<Speaker>>() {
-            @Override
-            public void onResponse(Call<List<Speaker>> call, Response<List<Speaker>> response) {
-                if(response.isSuccessful()){
-                    speakerAdapter.swap(response.body());
-                }
-            }
+        if(speakerAdapter.getItemCount() == 0) {
 
-            @Override
-            public void onFailure(Call<List<Speaker>> call, Throwable t) {
-                Log.e(TAG, "onFailure: ", t);
-            }
-        });
+            ((MainActivity)getActivity()).showLoading();
+
+            codeMashAPI.GetSpeakers().enqueue(new Callback<List<Speaker>>() {
+                @Override
+                public void onResponse(Call<List<Speaker>> call, Response<List<Speaker>> response) {
+                    if (response.isSuccessful()) {
+                        speakerAdapter.swap(response.body());
+                    }
+
+                    ((MainActivity) getActivity()).hideLoading();
+                }
+
+                @Override
+                public void onFailure(Call<List<Speaker>> call, Throwable t) {
+                    Log.e(TAG, "onFailure: ", t);
+
+                    ((MainActivity) getActivity()).hideLoading();
+                }
+            });
+        }
 
         if(((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
