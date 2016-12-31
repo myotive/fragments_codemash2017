@@ -23,10 +23,13 @@ public class MainActivity extends AppCompatActivity {
         progressBar = (ProgressBar)findViewById(R.id.loading);
         mainContent = findViewById(R.id.main_content);
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.main_content, SpeakerFragment.newInstance())
-                .commit();
+
+        if(savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.main_content, SpeakerFragment.newInstance())
+                    .commitNow();
+        }
     }
 
     public void showLoading(){

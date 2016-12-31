@@ -44,19 +44,6 @@ dependencies {
     // If you want the components that go along with
     // Android's support libraries (currently just a PagerAdapter):
     compile 'com.bluelinelabs:conductor-support:2.0.4'
-    // If you want RxJava/RxAndroid lifecycle support:
-    compile 'com.bluelinelabs:conductor-rxlifecycle:2.0.4'
-
-    // RxAndroid
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.6'
-
-    // RxLifecycle
-    compile 'com.trello:rxlifecycle:1.0'
-    // If you want to bind to Android-specific lifecycles
-    compile 'com.trello:rxlifecycle-android:1.0'
-    // If you want pre-written Activities and Fragments you can subclass as providers
-    compile 'com.trello:rxlifecycle-components:1.0'
 
     // Dagger 2
     compile 'com.google.dagger:dagger:2.8'
