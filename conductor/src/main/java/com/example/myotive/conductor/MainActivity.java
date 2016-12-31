@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import com.bluelinelabs.conductor.ChangeHandlerFrameLayout;
@@ -16,7 +17,7 @@ import com.example.myotive.conductor.controllers.SpeakerListController;
 
 public class MainActivity extends AppCompatActivity implements ProgressBarProvider, ActionBarProvider {
 
-    private ChangeHandlerFrameLayout mainContent;
+    private FrameLayout mainContent;
     private ProgressBar progressBar;
     private Router router;
 
@@ -25,14 +26,16 @@ public class MainActivity extends AppCompatActivity implements ProgressBarProvid
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainContent = (ChangeHandlerFrameLayout)findViewById(R.id.main_content);
+        CodeMashAPI codeMashAPI = BaseApplication.getApplication(this)
+                .getApplicationComponent()
+                .CodeMashAPI();
+
+        mainContent = (FrameLayout)findViewById(R.id.main_content);
         progressBar = (ProgressBar)findViewById(R.id.loading);
 
         router = Conductor.attachRouter(this, mainContent, savedInstanceState);
+
         if (!router.hasRootController()) {
-            CodeMashAPI codeMashAPI = BaseApplication.getApplication(this)
-                    .getApplicationComponent()
-                    .CodeMashAPI();
             router.setRoot(RouterTransaction.with(new SpeakerListController(codeMashAPI)));
         }
     }
