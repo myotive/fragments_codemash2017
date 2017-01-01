@@ -19,7 +19,7 @@ public class NetworkModule {
 
     @Provides
     @ApplicationScope
-    Retrofit provideRetrofit(OkHttpClient client){
+    public Retrofit provideRetrofit(OkHttpClient client){
 
         return new Retrofit.Builder()
                 .baseUrl("https://speakers.codemash.org/")
@@ -30,7 +30,7 @@ public class NetworkModule {
 
     @Provides
     @ApplicationScope
-    OkHttpClient provideHttpClient(HttpLoggingInterceptor logging){
+    public OkHttpClient provideHttpClient(HttpLoggingInterceptor logging){
 
         return new OkHttpClient.Builder()
                 .addInterceptor(logging)
@@ -39,7 +39,7 @@ public class NetworkModule {
 
     @Provides
     @ApplicationScope
-    HttpLoggingInterceptor provideInterceptor(){
+    public HttpLoggingInterceptor provideInterceptor(){
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
 
@@ -48,7 +48,7 @@ public class NetworkModule {
 
     @Provides
     @ApplicationScope
-    CodeMashAPI provideCodeMashAPI(Retrofit retrofit){
+    public CodeMashAPI provideCodeMashAPI(Retrofit retrofit){
         return retrofit.create(CodeMashAPI.class);
     }
 }

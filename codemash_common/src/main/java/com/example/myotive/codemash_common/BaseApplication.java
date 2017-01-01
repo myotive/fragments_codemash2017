@@ -40,4 +40,12 @@ public class BaseApplication extends Application {
                 .networkModule(new NetworkModule())
                 .build();
     }
+
+    /**
+     * Helper method to facilitate testing
+     * @param component
+     */
+    public void setComponent(ApplicationComponent component){
+        this.applicationComponent = component;
+    }
 }
