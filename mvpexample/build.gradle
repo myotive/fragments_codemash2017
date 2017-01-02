@@ -35,6 +35,8 @@ dependencies {
 
     compile 'com.google.dagger:dagger:2.8'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+    androidTestAnnotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+    testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.8'
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -54,6 +56,11 @@ dependencies {
     }
 
     androidTestCompile 'com.github.fabioCollini:DaggerMock:0.6.2'
+
+    androidTestCompile ('com.squareup.okhttp3:mockwebserver:3.5.0', {
+        exclude group: 'com.squareup.okio', module: 'okio'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    })
 
     testCompile 'junit:junit:4.12'
 
