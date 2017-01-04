@@ -1,6 +1,7 @@
 package com.example.myotive.mvpexample;
 
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.filters.LargeTest;
 import android.support.test.runner.AndroidJUnit4;
@@ -8,16 +9,14 @@ import android.util.Log;
 
 import com.example.myotive.codemash_common.BaseApplication;
 import com.example.myotive.codemash_common.di.ApplicationComponent;
-import com.example.myotive.codemash_common.tests.RecyclerViewItemCountAssertion;
+import com.example.myotive.codemash_common.tests.RecyclerViewAssertion;
 import com.example.myotive.mvpexample.di.MockedNetworkModule;
-import com.example.myotive.mvpexample.speakerlist.SpeakerListContract;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
@@ -27,8 +26,10 @@ import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static org.mockito.Mockito.verify;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
  * Created by michaelyotive_hr on 12/31/16.
@@ -38,7 +39,7 @@ public class SpeakerActivityTests {
 
     private static final String TAG = SpeakerActivityTests.class.getSimpleName();
 
-    private BaseApplication app;
+    // Retrofit Mock Web Server
     private MockWebServer mockWebServer = new MockWebServer();
 
    @Rule public DaggerMockRule<ApplicationComponent> daggerRule =
@@ -57,16 +58,9 @@ public class SpeakerActivityTests {
     public IntentsTestRule<SpeakerActivity> speakerActivityIntentsTestRule =
             new IntentsTestRule<>(SpeakerActivity.class, true, false);
 
-    @Mock
-    SpeakerListContract.View speakerView;
 
     @Before
     public void testSetup() {
-        MockitoAnnotations.initMocks(this);
-
-        app =  (BaseApplication) InstrumentationRegistry.getInstrumentation()
-                        .getTargetContext()
-                        .getApplicationContext();
         try {
             mockWebServer.start();
         } catch (IOException e) {
@@ -84,12 +78,32 @@ public class SpeakerActivityTests {
     }
 
     @Test
-    public void testHappyPath() {
+    public void test_ListOfSpeakers() {
+
+        // arrange
         givenIHaveAListOfSpeakers();
 
+        // act
         startActivity();
 
-        onView(withId(R.id.rv_speakers)).check(new RecyclerViewItemCountAssertion(1));
+        // assert
+        onView(withId(R.id.rv_speakers)).check(new RecyclerViewAssertion(1));
+    }
+
+    @Test
+    public void test_SpeakerDetail(){
+        // arrange
+        givenIHaveAListOfSpeakers();
+
+        // act
+        startActivity();
+
+        // assert
+        onView(withId(R.id.rv_speakers)).perform(RecyclerViewActions
+                .actionOnItemAtPosition(0,
+                        RecyclerViewAssertion.clickChildViewWithId(R.id.speaker_profile_image)));
+
+        onView(withText("Michael Yotive")).check(matches(isDisplayed()));
     }
 
     private void givenIHaveAListOfSpeakers() {
