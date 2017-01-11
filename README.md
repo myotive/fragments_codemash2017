@@ -39,7 +39,6 @@ To build, install and run a debug version, run this from the root of the project
 * https://medium.com/@jacquesgiraudel/fragments-too-complex-google-io-android-n-etc-75e6a7310b6d#.h4lvrjkxf
 * https://medium.com/@jacquesgiraudel/problem-with-restoring-fragments-from-the-backstack-945dc3f7f5a5#.i0hcragwi
 * https://www.pluralsight.com/blog/software-development/android-fragments
-
 * https://medium.com/inloop/demystifying-androids-commitallowingstateloss-cb9011a544cc#.q1c3s5o1q
 * http://www.androiddesignpatterns.com/2013/08/fragment-transaction-commit-state-loss.html
 * https://realm.io/news/360andev-david-hope-fragments-activities-android-beginner/
