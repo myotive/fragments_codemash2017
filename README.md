@@ -19,6 +19,8 @@ To build, install and run a debug version, run this from the root of the project
 # References
 
 * [What the Fragment - Adam Powell](https://www.youtube.com/watch?v=k3IT-IJ0J98)
+* [Square - Advocating Against Android Fragments](https://medium.com/square-corner-blog/advocating-against-android-fragments-81fd0b462c97#.oocb23bhn)
+* [Square - Flow and Mortar](https://medium.com/square-corner-blog/simpler-android-apps-with-flow-and-mortar-5beafcd83761#.sp63y1ae7)
 * [Google Samples - Android Architecture](https://github.com/googlesamples/android-architecture)
 
 #### BLOGS
