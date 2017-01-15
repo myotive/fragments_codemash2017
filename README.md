@@ -3,7 +3,7 @@ Fragments: The solution (and cause of) all of Android's problems
 
 Samples for my CodeMash 2017 talk "Fragments: The solution (and cause of) all of Android's problems".
 
-[Todo: Link to Slides](http://www.google.com)
+[Slides](https://speakerdeck.com/myotive/fragments-the-solution-to-and-cause-of-all-of-androids-problems-1)
 
 # Building
 
